@@ -42,3 +42,10 @@ create table user_log (
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
+create table premission_log (
+    log_id NUMBER GENERATED AS IDENTITY PRIMARY KEY,
+    premission_id NUMBER NOT NULL,
+    action VARCHAR2(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (premission_id) REFERENCES premissions(premission_id) ON DELETE CASCADE
+);
