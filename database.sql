@@ -33,3 +33,11 @@ create table user_roles (
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (role_id) REFERENCES roles(role_id) ON DELETE CASCADE
 );
+
+create table user_log (
+    log_id NUMBER GENERATED AS IDENTITY PRIMARY KEY,
+    user_id NUMBER NOT NULL,
+    action VARCHAR2(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
