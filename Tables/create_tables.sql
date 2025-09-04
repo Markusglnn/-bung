@@ -1,4 +1,4 @@
--- Nutzer-Tabelle
+
 CREATE TABLE nutzer (
     nutzer_id      NUMBER PRIMARY KEY,
     vorname        VARCHAR2(50) NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE nutzer (
     abteilung      VARCHAR2(50)
 );
 
--- Medium-Tabelle
+
 CREATE TABLE medium (
     medium_id        NUMBER PRIMARY KEY,
     titel            VARCHAR2(100) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE medium (
     gesamt_anzahl     NUMBER NOT NULL CHECK (gesamt_anzahl >= 0)
 );
 
--- Ausleihe-Tabelle
+
 CREATE TABLE ausleihe (
     ausleihe_id     NUMBER PRIMARY KEY,
     nutzer_id       NUMBER REFERENCES nutzer(nutzer_id),
@@ -26,7 +26,7 @@ CREATE TABLE ausleihe (
     status          VARCHAR2(20) DEFAULT 'aktiv' CHECK (status IN ('aktiv', 'zurückgegeben'))
 );
 
--- Bewertung-Tabelle
+
 CREATE TABLE bewertung (
     bewertung_id    NUMBER PRIMARY KEY,
     nutzer_id       NUMBER REFERENCES nutzer(nutzer_id),
@@ -36,7 +36,6 @@ CREATE TABLE bewertung (
     datum           DATE DEFAULT SYSDATE
 );
 
--- Event-Tabelle
 CREATE TABLE event (
     event_id        NUMBER PRIMARY KEY,
     titel           VARCHAR2(100) NOT NULL,
@@ -46,7 +45,6 @@ CREATE TABLE event (
     ort             VARCHAR2(100)
 );
 
--- Teilnahme-Tabelle
 CREATE TABLE teilnahme (
     teilnahme_id    NUMBER PRIMARY KEY,
     event_id        NUMBER REFERENCES event(event_id),
